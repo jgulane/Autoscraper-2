@@ -52,9 +52,3 @@ df
 
 df.to_csv("emergency_reports.csv")
 
-
-# In[ ]:
-
-
-
-
