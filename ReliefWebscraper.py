@@ -1,21 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[110]:
+# In[1]:
 
 
 import requests
 from bs4 import BeautifulSoup
 
 
-# In[111]:
+# In[2]:
 
 
 response = requests.get('https://reliefweb.int/updates?advanced-search=%28PC188%29')
 doc = BeautifulSoup(response.text, 'html.parser')
 
 
-# In[112]:
+# In[3]:
 
 
 articles = doc.select(".report.with-summary")
@@ -26,11 +26,12 @@ for article in articles:
      
 
 
-# In[118]:
+# In[6]:
 
 
 articles = doc.select(".report.with-summary")
 
+rows = []
 for article in articles:
     print("-----")
     row = {}
@@ -40,15 +41,23 @@ for article in articles:
 rows
 
 
-# In[114]:
+# In[8]:
 
+
+import pandas as pd
 
 df = pd.DataFrame(rows)
 df
 
 
-# In[116]:
+# In[9]:
 
 
 df.to_csv("emergency_reports.csv")
+
+
+# In[ ]:
+
+
+
 
